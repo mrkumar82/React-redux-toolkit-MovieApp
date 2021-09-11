@@ -8,7 +8,7 @@ function Header() {
         <div className="container">
           <div className="nav-wrapper">
             <Link to="/" className="brand-logo">
-              <i className="material-icons">cloud</i>Movie
+              <i className="material-icons">movie</i>Movie
             </Link>
             <ul className="right hide-on-med-and-down">
               <li>
