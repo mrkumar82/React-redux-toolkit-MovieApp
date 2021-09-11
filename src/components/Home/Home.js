@@ -5,27 +5,28 @@ import movieApi from "../api/MovieApi";
 import { APIKey } from "../api/MovieApiKey";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../../Store/Reducer";
+import { useDebounce } from "use-debounce";
 
 function Home() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+  const [value] = useDebounce(search, 500);
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const searchKey = search ? search : "Thor";
+      const searchKey = search ? value : "Thor";
 
       const resp = await movieApi
         .get(`?apikey=${APIKey}&s=${searchKey}&type=movie`)
         .catch((error) => {
           console.log(error);
         });
-      setTimeout(() => {
-        dispatch(addMovie(resp.data.Search));
-      }, 500);
+
+      dispatch(addMovie(resp.data.Search));
     };
 
     fetchMovies();
-  }, [search]);
+  }, [value]);
 
   return (
     <div>
