@@ -7,9 +7,8 @@ function MovieListing() {
   return (
     <div>
       <div className="row d-flex">
-        {movies.map((movie) => (
-          <MovieCard key={movie.imdbID} movie={movie} />
-        ))}
+        {movies &&
+          movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
       </div>
     </div>
   );
