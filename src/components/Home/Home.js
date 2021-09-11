@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const searchKey = search ? value : "Thor";
+      const searchKey = search ? search : "Thor";
 
       const resp = await movieApi
         .get(`?apikey=${APIKey}&s=${searchKey}&type=movie`)
